@@ -20,23 +20,27 @@
     
       var first_chart = MP.api.events('Sent Message', {
           from: moment().subtract(7, 'day'),
-          unit: 'day'
+          unit: 'day',
+          type: 'unique'
       });
    
       var second_chart = MP.api.events('Clicked Download Android', 'Clicked Download iOS', 'Clicked Download Mac', 'Clicked Download Windows', {
           from: moment().subtract(7, 'day'),
-          unit: 'day'
+          unit: 'day',
+          type: 'unique'
       });
      
      
       var third_chart = MP.api.events('Install', {
           from: moment().subtract(7, 'day'),
-          unit: 'day'
+          unit: 'day',
+          type: 'unique'
       });
       
       var fourth_chart = MP.api.events('Profile Edited', {
           from: moment().subtract(7, 'day'),
-          unit: 'day'
+          unit: 'day',
+          type: 'unique'
       });
       
       $.when(first_chart, second_chart, third_chart, fourth_chart).done(function(first_chart, second_chart, third_chart, fourth_chart) {
