@@ -19,23 +19,23 @@
       /*  First Chart */
     
       var first_chart = MP.api.events('Sent Message', {
-          from: moment().subtract(7, 'days'),
+          from: moment().subtract(7, 'day'),
           unit: 'day'
       });
    
       var second_chart = MP.api.events('Clicked Download Android', 'Clicked Download iOS', 'Clicked Download Mac', 'Clicked Download Windows' {
-          from: moment().subtract(7, 'days'),
+          from: moment().subtract(7, 'day'),
           unit: 'day'
       });
      
      
       var third_chart = MP.api.events('Install', {
-          from: moment().subtract(7, 'days'),
+          from: moment().subtract(7, 'day'),
           unit: 'day'
       });
       
       var fourth_chart = MP.api.events('Profile Edited', {
-          from: moment().subtract(7, 'days'),
+          from: moment().subtract(7, 'day'),
           unit: 'day'
       });
       
