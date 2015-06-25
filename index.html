@@ -26,8 +26,8 @@
      
       var third_chart = MP.api.people({where: '(datetime(1435191595 - 604800) < properties["$created"] and datetime(1435191595) >= properties["$created"] and not "jivesoftware.com" in properties["$email"])'}).done(function(results){
         console.log(results.values());
-        var total = results.values();
-        $('#users-created').text(total);
+        var total = results.values().total;
+        $('#users-created').text('Total Users Created: ' + total);
       });
       
       var fourth_chart = MP.api.events('Profile Edited', {
