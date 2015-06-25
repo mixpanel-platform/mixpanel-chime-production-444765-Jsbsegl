@@ -6,7 +6,7 @@
     <script src="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.js"></script>
   </head>
   <body class="mixpanel-platform-body">
-    <div id="users-created" font-size=100px ></div>
+    <div id="users-created"></div>
     <div id="table"></div>
     <script>
       /*  First Chart */
@@ -27,7 +27,7 @@
       var third_chart = MP.api.people({where: '(datetime(1435191595 - 604800) < properties["$created"] and datetime(1435191595) >= properties["$created"] and not "jivesoftware.com" in properties["$email"])'}).done(function(results){
         console.log(results.values());
         var total = results.values().total;
-        $('#users-created').text('Total Users Created (Last 7 days): ' + total);
+        $('#users-created').text('Total Users Created (Last 7 days): ' + total).css({'font-size': '100px'});
       });
       
       var fourth_chart = MP.api.events('Profile Edited', {
