@@ -12,7 +12,8 @@
     <h2 class="column">Last Week, Uniques</h2>
     <style>
       .column {
-        width: 40%;
+        width: 460px;
+        font-size: 20px;
         text-align: center;
         float: left;
         margin: 15px auto;
@@ -45,13 +46,11 @@
       });
       
       MP.api.people({where: '(datetime(1435198611 - 691200) < properties["$created"] and datetime(1435198611) >= properties["$created"] and not "jivesoftware.com" in properties["$email"])'}).done(function(results){
-        console.log(results.values());
         var total = results.values().total;
         $('#users-created').text('Total Users Created (Last 7 days): ' + total).css({'font-size': '30px'},{'padding-bottom': '25px'});
       });
       
       MP.api.people({where: '(datetime(1435259898 - 691200) < properties["$created"] and datetime(1435259898) >= properties["$created"] and not "jivesoftware.com" in properties["Organization"] and not "jive-dev.com" in properties["Organization"] and defined (properties["Org Size at Signup"]))'}).done(function(results){
-        console.log(results.values());
         var total = results.values().total;
         $('#orgs-created').text('Total Organizations Created (Last 7 days): ' + total).css({'font-size': '30px'},{'padding-bottom': '25px'});
       });
