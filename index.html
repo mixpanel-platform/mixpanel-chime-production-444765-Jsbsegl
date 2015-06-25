@@ -30,6 +30,8 @@
         $('#users-created').text('Total Users Created (Last 7 days): ' + total);
       });
       
+      var result = third_chart.fontsize(14)
+      
       var fourth_chart = MP.api.events('Profile Edited', {
           from: moment().subtract(7, 'day'),
           unit: 'day',
