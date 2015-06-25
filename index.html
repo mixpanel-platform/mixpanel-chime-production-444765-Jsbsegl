@@ -7,6 +7,7 @@
   </head>
   <body class="mixpanel-platform-body">
     <div id="users-created"></div>
+    <div id="orgs-created"></div>
     <div id="table"></div>
     <script>
       /*  First Chart */
@@ -36,10 +37,16 @@
           type: 'unique'
       });
       
-            var fifth_chart = MP.api.people({where: '(datetime(1435198611 - 691200) < properties["$created"] and datetime(1435198611) >= properties["$created"] and not "jivesoftware.com" in properties["$email"])'}).done(function(results){
+      var fifth_chart = MP.api.people({where: '(datetime(1435198611 - 691200) < properties["$created"] and datetime(1435198611) >= properties["$created"] and not "jivesoftware.com" in properties["$email"])'}).done(function(results){
         console.log(results.values());
         var total = results.values().total;
         $('#users-created').text('Total Users Created (Last 7 days): ' + total).css({'font-size': '30px'},{'padding-bottom': '25px'});
+      });
+      
+      var sixth_chart = MP.api.people({where: '(datetime(1435259898 - 691200) < properties["$created"] and datetime(1435259898) >= properties["$created"] and not "jivesoftware.com" in properties["Organization"] and not "jive-dev.com" in properties["Organization"] and defined (properties["Org Size at Signup"]))'}).done(function(results){
+        console.log(results.values());
+        var total = results.values().total;
+        $('#orgs-created').text('Total Organizations Created (Last 7 days): ' + total).css({'font-size': '30px'},{'padding-bottom': '25px'});
       });
       
       $.when(first_chart, second_chart, third_chart, fourth_chart).done(function(first_chart, second_chart, third_chart, fourth_chart) {
