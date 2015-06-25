@@ -10,8 +10,7 @@
     <div id="orgs-created"></div>
     <div id="table"></div>
     <script>
-      /*  First Chart */
-    
+
       var first_chart = MP.api.events('Sent Message', {
           from: moment().subtract(1, 'month'),
           unit: 'day',
@@ -23,7 +22,6 @@
           unit: 'day',
           type: 'unique'
       });
-     
      
       var third_chart = MP.api.events('Clicked Download Android', 'Clicked Download iOS', 'Clicked Download Mac', 'Clicked Download Windows', {
           from: moment().subtract(1, 'month'),
@@ -37,21 +35,19 @@
           type: 'unique'
       });
       
-      var fifth_chart = MP.api.people({where: '(datetime(1435198611 - 691200) < properties["$created"] and datetime(1435198611) >= properties["$created"] and not "jivesoftware.com" in properties["$email"])'}).done(function(results){
+      MP.api.people({where: '(datetime(1435198611 - 691200) < properties["$created"] and datetime(1435198611) >= properties["$created"] and not "jivesoftware.com" in properties["$email"])'}).done(function(results){
         console.log(results.values());
         var total = results.values().total;
         $('#users-created').text('Total Users Created (Last 7 days): ' + total).css({'font-size': '30px'},{'padding-bottom': '25px'});
       });
       
-      var sixth_chart = MP.api.people({where: '(datetime(1435259898 - 691200) < properties["$created"] and datetime(1435259898) >= properties["$created"] and not "jivesoftware.com" in properties["Organization"] and not "jive-dev.com" in properties["Organization"] and defined (properties["Org Size at Signup"]))'}).done(function(results){
+      MP.api.people({where: '(datetime(1435259898 - 691200) < properties["$created"] and datetime(1435259898) >= properties["$created"] and not "jivesoftware.com" in properties["Organization"] and not "jive-dev.com" in properties["Organization"] and defined (properties["Org Size at Signup"]))'}).done(function(results){
         console.log(results.values());
         var total = results.values().total;
         $('#orgs-created').text('Total Organizations Created (Last 7 days): ' + total).css({'font-size': '30px'},{'padding-bottom': '25px'});
       });
       
       $.when(first_chart, second_chart, third_chart, fourth_chart).done(function(first_chart, second_chart, third_chart, fourth_chart) {
-          
-         
           
           var drawGraph = function(firstChartData, secondChartData, thirdChartData, fourthChartData){
         
@@ -74,13 +70,12 @@
                   chartType: 'line',
                   data: fourthChartData
               });
-              //$('.mixpanel-platform-multi_selector').css({'clear':'both'});
-              //$('.title').css({'width':'55px'});
-              $('.color_toggle_dropdown').each(function(){this.style.setProperty('width', '170px', 'important')});
-              $('.title').each(function(){this.style.setProperty('width', '105px', 'important')});
+              // //$('.mixpanel-platform-multi_selector').css({'clear':'both'});
+              // //$('.title').css({'width':'55px'});
+              // $('.color_toggle_dropdown').each(function(){this.style.setProperty('width', '170px', 'important')});
+              // $('.title').each(function(){this.style.setProperty('width', '105px', 'important')});
               
           }
-          
           
           drawGraph(first_chart.values(), second_chart.values(), third_chart.values(), fourth_chart.values());
           
