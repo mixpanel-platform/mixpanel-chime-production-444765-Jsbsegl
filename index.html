@@ -8,17 +8,7 @@
   <body class="mixpanel-platform-body">
     <div id="users-created"></div>
     <div id="orgs-created"></div>
-    <h2 class="column">Last Month, Totals</h2>
-    <h2 class="column">Last Week, Uniques</h2>
-    <style>
-      .column {
-        width: 460px;
-        font-size: 20px;
-        text-align: center;
-        float: left;
-        margin: 15px auto;
-      }
-    </style>
+    <div id="table"></div>
     <script>
 
       var first_chart = MP.api.events('Sent Message', {
@@ -46,11 +36,13 @@
       });
       
       MP.api.people({where: '(datetime(1435198611 - 691200) < properties["$created"] and datetime(1435198611) >= properties["$created"] and not "jivesoftware.com" in properties["$email"])'}).done(function(results){
+        console.log(results.values());
         var total = results.values().total;
         $('#users-created').text('Total Users Created (Last 7 days): ' + total).css({'font-size': '30px'},{'padding-bottom': '25px'});
       });
       
       MP.api.people({where: '(datetime(1435259898 - 691200) < properties["$created"] and datetime(1435259898) >= properties["$created"] and not "jivesoftware.com" in properties["Organization"] and not "jive-dev.com" in properties["Organization"] and defined (properties["Org Size at Signup"]))'}).done(function(results){
+        console.log(results.values());
         var total = results.values().total;
         $('#orgs-created').text('Total Organizations Created (Last 7 days): ' + total).css({'font-size': '30px'},{'padding-bottom': '25px'});
       });
@@ -78,7 +70,11 @@
                   chartType: 'line',
                   data: fourthChartData
               });
-
+              //$('.mixpanel-platform-multi_selector').css({'clear':'both'});
+              //$('.title').css({'width':'55px'});
+              $('.color_toggle_dropdown').each(function(){this.style.setProperty('width', '170px', 'important')});
+              $('.title').each(function(){this.style.setProperty('width', '105px', 'important')});
+              
           }
           
           drawGraph(first_chart.values(), second_chart.values(), third_chart.values(), fourth_chart.values());
