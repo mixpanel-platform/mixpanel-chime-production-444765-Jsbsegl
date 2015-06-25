@@ -9,6 +9,16 @@
     <div id="users-created"></div>
     <div id="orgs-created"></div>
     <div id="table"></div>
+    <h2 class="header">Last Month: Totals</h2>
+    <h2 class="header">Last Week: Uniques</h2>
+    <style>
+      .header {
+        width: 460px;
+        float: left;
+        font-size: 20px;
+        text-align: center;
+      }
+    </style>
     <script>
 
       var first_chart = MP.api.events('Sent Message', {
@@ -44,29 +54,29 @@
       MP.api.people({where: '(datetime(1435259898 - 691200) < properties["$created"] and datetime(1435259898) >= properties["$created"] and not "jivesoftware.com" in properties["Organization"] and not "jive-dev.com" in properties["Organization"] and defined (properties["Org Size at Signup"]))'}).done(function(results){
         console.log(results.values());
         var total = results.values().total;
-        $('#orgs-created').text('Total Organizations Created (Last 7 days): ' + total).css({'font-size': '30px'},{'padding-bottom': '25px'});
+        $('#orgs-created').text('Total Organizations Created (Last 7 days): ' + total).css({'font-size': '30px'},{'margin-bottom': '25px'});
       });
       
       $.when(first_chart, second_chart, third_chart, fourth_chart).done(function(first_chart, second_chart, third_chart, fourth_chart) {
           
           var drawGraph = function(firstChartData, secondChartData, thirdChartData, fourthChartData){
         
-              $('<div class="first"></div>').css({'width':'460px', 'float':'left'}).appendTo('body').MPChart({
+              $('<div class="first"></div>').css({'width':'460px', 'float':'left', 'margin-bottom': '20px'}).appendTo('body').MPChart({
                   chartType: 'line',
                   data: firstChartData
               });
               
-              $('<div class="second"></div>').css({'width':'460px', 'float':'right'}).appendTo('body').MPChart({
+              $('<div class="second"></div>').css({'width':'460px', 'float':'right', 'margin-bottom': '20px'}).appendTo('body').MPChart({
                   chartType: 'line',
                   data: secondChartData
               });
               
-              $('<div class="third"></div>').css({'width':'460px', 'float':'left'}).appendTo('body').MPChart({
+              $('<div class="third"></div>').css({'width':'460px', 'float':'left', 'margin-bottom': '20px'}).appendTo('body').MPChart({
                     chartType: 'line',
                     data: thirdChartData
                 });
               
-              $('<div class="fourth"></div>').css({'width':'460px', 'float':'right'}).appendTo('body').MPChart({
+              $('<div class="fourth"></div>').css({'width':'460px', 'float':'right', 'margin-bottom': '20px'}).appendTo('body').MPChart({
                   chartType: 'line',
                   data: fourthChartData
               });
