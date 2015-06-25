@@ -6,14 +6,7 @@
     <script src="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.js"></script>
   </head>
   <body class="mixpanel-platform-body">
-    <div class="mixpanel-platform-section">
-      <div id="eventSelect" style="float: left;"></div>
-      <div id="by" class="mixpanel-platform-label" style="margin-left: 10px; display: none;">by</div>
-      <div id="propSelect" style="float: left;"></div>
-      <div id="dateSelect" style="float: right;"></div>
-      <div style="clear: both;"></div>
-      <div id="graph"></div>
-    </div>
+    <div id="users-created"></div>
     <div id="table"></div>
     <script>
       /*  First Chart */
@@ -32,7 +25,8 @@
      
      
       var third_chart = MP.api.people({where: '(datetime(1435191595 - 604800) < properties["$created"] and datetime(1435191595) >= properties["$created"] and not "jivesoftware.com" in properties["$email"])'}).done(function(results){
-        console.log(results.values())
+        console.log(results.values());
+        $('#users-created').text('hi');
       });
       
       var fourth_chart = MP.api.events('Profile Edited', {
