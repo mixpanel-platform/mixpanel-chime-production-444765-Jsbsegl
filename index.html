@@ -51,7 +51,7 @@
           type: 'unique'
       });
       
-      console.log('(datetime('+new Date().getTime()/1000.toFixed()+'- 691200) < properties["$created"] and datetime('+new Date().getTime()/1000.toFixed()+') >= properties["$created"] and not "jivesoftware.com" in properties["$email"])')
+      console.log('(datetime('+(new Date().getTime()/1000).toFixed()+'- 691200) < properties["$created"] and datetime('+(new Date().getTime()/1000).toFixed()+') >= properties["$created"] and not "jivesoftware.com" in properties["$email"])')
       MP.api.people({where: '(datetime('+new Date().getTime()+'- 691200) < properties["$created"] and datetime('+new Date().getTime()+') >= properties["$created"] and not "jivesoftware.com" in properties["$email"])'}).done(function(results){
         console.log(results.values());
         var total = results.values().total;
