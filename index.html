@@ -58,7 +58,7 @@
         $('#users-created').text('Total Users Created (Last 7 days): ' + total).css({'font-size': '30px'},{'padding-bottom': '25px'});
       });
       
-      MP.api.people({where: '(datetime('+Math.floor(new Date().getTime()/1000)+' - 691200) < properties["$created"] and datetime('+Math.floor(new Date().getTime()/1000)') >= properties["$created"] and not "jivesoftware.com" in properties["Organization"] and not "jive-dev.com" in properties["Organization"] and defined (properties["Org Size at Signup"]))'}).done(function(results){
+      MP.api.people({where: '(datetime('+Math.floor(new Date().getTime()/1000)+' - 691200) < properties["$created"] and datetime('+Math.floor(new Date().getTime()/1000)+') >= properties["$created"] and not "jivesoftware.com" in properties["Organization"] and not "jive-dev.com" in properties["Organization"] and defined (properties["Org Size at Signup"]))'}).done(function(results){
         console.log(results.values());
         var total = results.values().total;
         $('#orgs-created').text('Total Organizations Created (Last 7 days): ' + total).css({'font-size': '30px'},{'margin-bottom': '25px'});
