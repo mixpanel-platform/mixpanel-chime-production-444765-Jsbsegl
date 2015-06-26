@@ -50,7 +50,7 @@
           unit: 'day',
           type: 'unique'
       });
-      
+      console.log(Date.now())
       MP.api.people({where: '(datetime('+Date.now()+'- 691200) < properties["$created"] and datetime('+Date.now()+') >= properties["$created"] and not "jivesoftware.com" in properties["$email"])'}).done(function(results){
         console.log(results.values());
         var total = results.values().total;
