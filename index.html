@@ -51,8 +51,7 @@
           type: 'unique'
       });
       
-      var now = Date.now
-      MP.api.people({where: str='(datetime('now'- 691200) < properties["$created"] and datetime(1435198611) >= properties["$created"] and not "jivesoftware.com" in properties["$email"])'}).done(function(results){
+      MP.api.people({where: str='(datetime('+Date.now()+'- 691200) < properties["$created"] and datetime('+Date.now()') >= properties["$created"] and not "jivesoftware.com" in properties["$email"])'}).done(function(results){
         console.log(results.values());
         var total = results.values().total;
         $('#users-created').text('Total Users Created (Last 7 days): ' + total).css({'font-size': '30px'},{'padding-bottom': '25px'});
