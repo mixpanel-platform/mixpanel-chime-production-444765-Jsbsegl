@@ -30,25 +30,29 @@
       var first_chart = MP.api.events('Sent Message', {
           from: moment().subtract(1, 'month'),
           unit: 'day',
-          type: 'general'
+          type: 'general',
+          where: 'not "jivesoftware.com" in string(properties["$email"])'
       });
    
       var second_chart = MP.api.events('Sent Message', {
           from: moment().subtract(7, 'day'),
           unit: 'day',
-          type: 'unique'
+          type: 'unique',
+          where: 'not "jivesoftware.com" in string(properties["$email"])'
       });
      
       var third_chart = MP.api.events('Clicked Download Android', 'Clicked Download iOS', 'Clicked Download Mac', 'Clicked Download Windows', {
           from: moment().subtract(1, 'month'),
           unit: 'day',
-          type: 'general'
+          type: 'general',
+          where: 'not "jivesoftware.com" in string(properties["$email"])'
       });
       
       var fourth_chart = MP.api.events('Clicked Download Android', 'Clicked Download iOS', 'Clicked Download Mac', 'Clicked Download Windows', {
           from: moment().subtract(7, 'day'),
           unit: 'day',
-          type: 'unique'
+          type: 'unique',
+          where: 'not "jivesoftware.com" in string(properties["$email"])'
       });
       
       // console.log('(datetime('+(new Date().getTime()/1000).toFixed()+'- 691200) < properties["$created"] and datetime('+(new Date().getTime()/1000).toFixed()+') >= properties["$created"] and not "jivesoftware.com" in properties["$email"])')
