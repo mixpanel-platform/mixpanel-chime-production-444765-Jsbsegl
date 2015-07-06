@@ -41,9 +41,9 @@
           where: 'not "jivesoftware.com" in string(properties["$email"])'
       });
       
-      var dropdown = MP.api.query('/api/2.0/engage/values', {property: 'Organization'}, {dataType: 'json'})
+      var dropdown = MP.api.query('/api/2.0/engage/values', {property: 'Organization'}, {dataType: 'string'})
 .done(function(json) {
-    console.log(dropdown, json);
+    console.log(dropdown, string);
 })
      
       var third_chart = MP.api.events('Clicked Download Android', 'Clicked Download iOS', 'Clicked Download Mac', 'Clicked Download Windows', {
